@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrada Zahtjeva</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Obrada Zahtjeva</h2>
+
+        <p>Jeste li sigurni da želite obraditi zahtjev <strong>{{ zahtjev.naziv_zahtjeva }}</strong>?</p>
+        <p>Vrsta: {{ zahtjev.get_vrsta_zahtjeva_display }}</p>
+
+        <form action="{% url 'confirm_obrada_zahtjeva' zahtjev.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-primary">Potvrdi Obradu</button>
+        </form>
+
+        <div class="back-button">
+            <a href="{% url 'obrada_zahtjevi' %}">
+                <button class="btn-secondary">Povratak na zahtjeve</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

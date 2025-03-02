@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchoolApp</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'img/SchoolApp.png' %}" alt="SchoolApp Logo">
+        </div>
+        
+        <h1 style="text-align: center;">Welcome to SchoolApp</h1>
+        
+        <div class="buttons">
+            <a href="{% url 'login' %}">
+                <button class="btn">Prijava</button>
+            </a>
+            <a href="{% url 'register' %}">
+                <button class="btn">Registracija</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+## TODO Funkcionalnosti
+
+### Zahtjevi
+
+* **MOJI ZAHTJEVI:**
+    * Maknuti gumb OBRISI sa obrađenih zahtjeva
+    * Dodati filter/gumb za prikaz ZAKLJUČANIH (obrađenih) zahtjeva (korisnička strana). - odluceno da ce se makn
+    * Na refresh se prikazuje error da Zahtjev nije obrisan
+
+* **SVI ZAHTJEVI:**
+    * Maknuti gumb OBRISI sa obrađenih zahtjeva
+    * Dodati filter/gumb za prikaz ZAKLJUČANIH (obrađenih) zahtjeva (korisnička strana). - odluceno da ce se makn
+
+### Putni nalog
+
+* **PUTNI NALOG:**
+    * Nakon uspješnog unosa, preusmjeriti na stranicu "Moji nalozi". ✔️ NAPRAVLJENO 16.02
+    * **OBAVEZNO:** Dodati stranicu "MOJI PUTNI NALOZI" s listom putnih naloga. Klikom na nalog, otvara se detaljan prikaz (s mogućnošću izmjene).
+    * Prikaz obrazloženja samo ako postoje 2 ista dana u putnom nalogu.
+    * Dodati mogućnost unosa PUTNOG NALOGA za određeni dan (npr. 1. i 15. u mjesecu).
+
+### Login / Registracija
+
+* **LOGIN:**
+    * Dodati provjeru jedinstvenosti e-mail adrese prilikom registracije.
+
+* **LOGOUT:**
+    * Dodati logout (koji vodi na login) ✔️ NAPRAVLJENO 17.02.
+
+### Korisnici / Grupe
+
+* **GRUPE:**
+    * Dodati grupu "Domar" (dodano kao superuser) - ✔️ NAPRAVLJENO 17.02.
+    * Grupa "Domar" mora vidjeti predane zahtjeve (kvarove) - ✔️ NAPRAVLJENO 17.02.
+    * Dodati grupu "Računovođa" (dodati kao superuser). 
+    * "Računovođa" mora vidjeti predane putne naloge.
+    * Grupa "Admin" mora vidjeti sve zahtjeve/naloge. ✔️ NAPRAVLJENO 17.02.
+    * Razmotriti dodavanje ostalih grupa (ravnatelj / IT itd.).
+
+### Računovodstvo
+
+* Dodati gumb "Dodaj naknadu" za administriranje naknada. ✔️ NAPRAVLJENO 17.02.
+
+## Sređivanje Koda (Refaktoriranje)
+
+* **KONVENCIJE:**
+    * Ujednačiti naming konvencije (hrvatski ili engleski naziv funkcija, varijabli, klasa itd).
+* **STRUKTURA:**
+    * Razdvojiti prevelike funkcije.
+    * Razmotriti razbijanje `views.py` u više datoteka.
+    * Pojednostaviti HTML strukturu.
+    * Obrisati nekorišteni kod i mape.
+* **KOMENTARI:**
+    * Premjestiti komentare iznad koda.
+* **IMENOVANJE:**
+    * Poboljšati imena funkcija i klasa (npr. `ULAZ` model).
+* **CSS/HTML:**
+    * Srediti CSS/HTML strukturu za "Putni nalog".  ✔️ NAPRAVLJENO 17.02.
+* **PAGINACIJA:**
+    * Dodati paginaciju ispisa u svim listama.
+
+## Dokumentacija
+
+* **TEHNIČKA DOKUMENTACIJA:**
+    * Napisati tehničku dokumentaciju. ✔️ NAPRAVLJENO 15.02.
+* **README.md:**
+    * Napisati upute za pokretanje aplikacije i kratki korisnički vodič. ✔️ NAPRAVLJENO 15.02.

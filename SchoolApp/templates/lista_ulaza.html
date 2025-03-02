@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista ulaza</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Lista ulaza</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>OIB</th>
+                    <th>Razlog dolaska</th>
+                    <th>Vrijeme unosa</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ulaz in ulazi %}
+                <tr>
+                    <td>{{ ulaz.ime_osobe }}</td>
+                    <td>{{ ulaz.prezime_osobe }}</td>
+                    <td>{{ ulaz.oib_osobe }}</td>
+                    <td>{{ ulaz.razlog_dolaska }}</td>
+                    <td>{{ ulaz.id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="buttons">
+                <button type="button" onclick="window.location.href='/home';" class="cancel-button">Povratak na home</button>
+        </div>
+    </div>
+</body>
+</html>

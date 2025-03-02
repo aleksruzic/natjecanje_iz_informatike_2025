@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zahtjevi</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Zahtjevi</h2>
+        
+        <!-- Gumbi za prijavu kvara i IT problema -->
+        <div class="buttons">
+            <a href="{% url 'prijavi_kvar' %}">
+                <button>Prijavi Kvar</button>
+            </a>
+            <a href="{% url 'prijavi_it_problem' %}">
+                <button>Prijavi IT Problem</button>
+            </a>
+        </div>
+
+        <!-- Prikaz poruke korisnicima -->
+        {% if messages %}
+        <section class="messages">
+            {% for message in messages %}
+            <div class="popup-message{% if message.tags == 'error' %} error{% endif %}">
+                <p>{{ message }}</p>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        <h3>Moji Zahtjevi</h3>
+        {% if zahtjevi %}
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Naziv Zahtjeva</th>
+                    <th>Opis Zahtjeva</th>
+                    <th>Vrsta Zahtjeva</th> <!-- Novi stupac za vrstu zahtjeva -->
+                    <th>Status</th>
+                    <th>Akcija</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for zahtjev in zahtjevi %}
+                <tr>
+                    <td>{{ zahtjev.naziv_zahtjeva }}</td>
+                    <td>{{ zahtjev.opis_zahtjeva }}</td>
+                    <td>{{ zahtjev.vrsta_zahtjeva }}</td> <!-- Prikazujemo vrstu zahtjeva -->
+                    <td>
+                        {% if zahtjev.obraden_zahtjev %}
+                        Obraden
+                        {% else %}
+                        Neobradjen
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form method="POST" action="{% url 'zahtjevi' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="zahtjev_id" value="{{ zahtjev.id }}">
+                            <button type="submit">Obriši</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Nemate podnesenih zahtjeva.</p>
+        {% endif %}
+
+        <!-- Gumb za povratak na početnu stranicu -->
+        <div class="back-button">
+            <a href="{% url 'home' %}">
+                <button>Povratak na Početnu</button>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- JavaScript za automatsko uklanjanje popup poruka -->
+    <script>
+        // Ako postoji popup poruka, ukloni je nakon 5 sekundi
+        window.onload = function() {
+            const popups = document.querySelectorAll('.popup-message');
+            popups.forEach(function(popup) {
+                setTimeout(function() {
+                    popup.style.display = 'none';
+                }, 5000); // Sakrij poruku nakon 5 sekundi
+            });
+        };
+    </script>
+</body>
+</html>

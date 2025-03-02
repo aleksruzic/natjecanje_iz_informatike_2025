@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijava</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Linkanje CSS-a -->
+</head>
+<body>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Prijavi se</h2>
+            {{ form.as_p }}
+            <button type="submit">Prijavi se</button>
+            
+            <p>Nemate račun? <a href="{% url 'register' %}">Registrirajte se</a></p>
+            
+            {% if messages %}
+                <div class="error-message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Django",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py", // Putanja do vaše manage.py datoteke
+            "args": [
+                "runserver",
+                "--noreload" // Važno: Dodajte --noreload da biste spriječili automatsko ponovno učitavanje servera
+            ],
+            "console": "integratedTerminal", // Možete koristiti i "externalTerminal"
+            "justMyCode": true // Da biste debuggirali samo vaš kod, a ne Django-ov
+        }
+    ]
+}

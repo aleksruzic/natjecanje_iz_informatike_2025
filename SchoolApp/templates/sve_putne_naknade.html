@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odabir Putne Naknade</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>NAKNADA</h2>
+
+        <!-- Gumb za povratak na početnu stranicu -->
+        <div class="back-button">
+            <a href="{% url 'home' %}">
+                <button>Povratak na Početnu</button>
+            </a>
+        </div>
+
+        <!-- Prikaz poruke korisnicima -->
+        {% if messages %}
+        <section class="messages">
+            {% for message in messages %}
+            <div class="popup-message{% if message.tags == 'error' %} error{% endif %}">
+                <p>{{ message }}</p>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        {% if naknade %}
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Naknada</th>
+                    <th>Aktivna</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for naknada in naknade %}
+                <tr>
+                    <td>{{ naknada.iznos }}</td>
+                    <td>
+                        {% if not naknada.aktivna_naknada %}
+                            <a href="{% url 'odaberi_naknadu' naknada.id %}">
+                                <button>Odaberi</button>
+                            </a>
+                        {% else %}
+                            <span>Odabrana</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Nema Naknada za odabir.</p>
+        {% endif %}
+    </div>
+
+    <!-- JavaScript za automatsko uklanjanje popup poruka -->
+    <script>
+        window.onload = function() {
+            const popups = document.querySelectorAll('.popup-message');
+            popups.forEach(function(popup) {
+                setTimeout(function() {
+                    popup.style.display = 'none';
+                }, 5000); // Sakrij poruku nakon 5 sekundi
+            });
+        };
+    </script>
+</body>
+</html>

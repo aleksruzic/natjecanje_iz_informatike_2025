@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svi Zahtjevi</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Svi Zahtjevi</h2>
+
+        <!-- Gumb za povratak na početnu stranicu -->
+        <div class="back-button">
+            <a href="{% url 'home' %}">
+                <button>Povratak na Početnu</button>
+            </a>
+            <a href="{% url 'obrada_zahtjevi' %}">
+                <button>Zahtjevi za obradu</button>
+            </a>
+        </div>
+
+
+        <!-- Prikaz poruke korisnicima -->
+        {% if messages %}
+        <section class="messages">
+            {% for message in messages %}
+            <div class="popup-message{% if message.tags == 'error' %} error{% endif %}">
+                <p>{{ message }}</p>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        {% if zahtjevi %}
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Naziv Zahtjeva</th>
+                    <th>Opis Zahtjeva</th>
+                    <th>Vrsta Zahtjeva</th>
+                    <th>Akcija</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for zahtjev in zahtjevi %}
+                <tr>
+                    <td>{{ zahtjev.naziv_zahtjeva }}</td>
+                    <td>{{ zahtjev.opis_zahtjeva }}</td>
+                    <td>{{ zahtjev.vrsta_zahtjeva|capfirst }}</td>
+                    <td>
+                        {% if not zahtjev.obraden_zahtjev %}
+                            <span>Neobrađeno</span>
+                        {% else %}
+                            <span>Obrađeno</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Nema zahtjeva koji čekaju obradu.</p>
+        {% endif %}
+    </div>
+
+    <!-- JavaScript za automatsko uklanjanje popup poruka -->
+    <script>
+        window.onload = function() {
+            const popups = document.querySelectorAll('.popup-message');
+            popups.forEach(function(popup) {
+                setTimeout(function() {
+                    popup.style.display = 'none';
+                }, 5000); // Sakrij poruku nakon 5 sekundi
+            });
+        };
+    </script>
+</body>
+</html>
