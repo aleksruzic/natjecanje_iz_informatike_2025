@@ -18,6 +18,7 @@
     * **OBAVEZNO:** Dodati stranicu "MOJI PUTNI NALOZI" s listom putnih naloga. Klikom na nalog, otvara se detaljan prikaz (s mogućnošću izmjene).
     * Prikaz obrazloženja samo ako postoje 2 ista dana u putnom nalogu.
     * Dodati mogućnost unosa PUTNOG NALOGA za određeni dan (npr. 1. i 15. u mjesecu).
+    * Dodati padajuci izbornik za Skole - ✔️ NAPRAVLJENO
 
 ### Login / Registracija
 
@@ -32,7 +33,7 @@
 * **GRUPE:**
     * Dodati grupu "Domar" (dodano kao superuser) - ✔️ NAPRAVLJENO
     * Grupa "Domar" mora vidjeti predane zahtjeve (kvarove) - ✔️ NAPRAVLJENO.
-    * Dodati grupu "Računovođa" (dodati kao superuser). 
+    * Dodati grupu "Računovođa" (dodati kao superuser).  ✔️ NAPRAVLJENO
     * "Računovođa" mora vidjeti predane putne naloge.
     * Grupa "Admin" mora vidjeti sve zahtjeve/naloge. ✔️ NAPRAVLJENO
     * Razmotriti dodavanje ostalih grupa (ravnatelj / IT itd.).
@@ -49,9 +50,9 @@
     * Razdvojiti prevelike funkcije.
     * Razmotriti razbijanje `views.py` u više datoteka.
     * Pojednostaviti HTML strukturu.
-    * Obrisati nekorišteni kod i mape.
+    * Obrisati nekorišteni kod i mape. ✔️ NAPRAVLJENO
 * **KOMENTARI:**
-    * Premjestiti komentare iznad koda.
+    * Premjestiti komentare iznad koda. ✔️ NAPRAVLJENO
 * **IMENOVANJE:**
     * Poboljšati imena funkcija i klasa (npr. `ULAZ` model).
 * **CSS/HTML:**
@@ -64,4 +65,4 @@
 * **TEHNIČKA DOKUMENTACIJA:**
     * Napisati tehničku dokumentaciju. ✔️ NAPRAVLJENO
 * **README.md:**
-    * Napisati upute za pokretanje aplikacije i kratki korisnički vodič. ✔️ NAPRAVLJENO 15.02.
+    * Napisati upute za pokretanje aplikacije i kratki korisnički vodič. ✔️ NAPRAVLJENO
